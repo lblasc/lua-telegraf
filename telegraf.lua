@@ -37,15 +37,12 @@ function _M.set(self, measurement, fields, tags, timestamp)
     end
   end
 
-  local precision = self.precision
-  if precision ~= 'none' then
-    timestamp = timestamp or ts.now(precision)
-  end
+  timestamp = timestamp or ts.now(self.precision)
 
-  local res = lp.build_str(measurement, fields, merged_tags, timestamp)
-  if not res then return nil end
+  local msg = lp.build_str(measurement, fields, merged_tags, timestamp)
+  if not msg then return nil end
 
-  w.send(self.host, self.port, res)
+  w.send(msg, self.host, self.port)
 end
 
 return _M
