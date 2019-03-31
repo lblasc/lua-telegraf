@@ -24,7 +24,7 @@ if not ok then
 end
 
 local _M = {}
-_M._VERSION = '1.1.0'
+_M._VERSION = '1.1.1'
 local mt = {__index = _M}
 
 function _M.new(options)
@@ -67,14 +67,6 @@ function _M.flush(self)
 end
 
 function _M.set(self, measurement, fields, tags, timestamp)
-  measurement = tostring(measurement)
-  if type(measurement) ~= 'string' then
-    return nil, 'measurement must be string'
-  end
-
-  if type(fields) ~= 'table' then
-    return nil, 'fields must be table'
-  end
 
   local global_tags = self.global_tags
   if global_tags then
@@ -92,8 +84,8 @@ function _M.set(self, measurement, fields, tags, timestamp)
 
   timestamp = timestamp or ts.now(self.precision)
 
-  local msg = lp.build_str(measurement, fields, tags, timestamp)
-  if not msg then return nil, 'error building msg string' end
+  local msg, err = lp.build_str(measurement, fields, tags, timestamp)
+  if not msg then return nil, err end
 
   if self.batch_size then
     table.insert(self.__buffer, msg)
