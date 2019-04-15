@@ -1,3 +1,10 @@
+## v1.1.2 [2019-04-15]
+
+#### Release Notes
+
+Set default port to `8094` which is default in telegraf when used
+with `udp`, fix return of `set` method.
+
 ## v1.1.1 [2019-03-31]
 
 #### Release Notes

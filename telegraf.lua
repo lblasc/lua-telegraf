@@ -24,7 +24,7 @@ if not ok then
 end
 
 local _M = {}
-_M._VERSION = '1.1.1'
+_M._VERSION = '1.1.2'
 local mt = {__index = _M}
 
 function _M.new(options)
