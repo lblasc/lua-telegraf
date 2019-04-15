@@ -89,10 +89,10 @@ function _M.set(self, measurement, fields, tags, timestamp)
 
   if self.batch_size then
     table.insert(self.__buffer, msg)
-    return
+    return true
   end
 
-  w.send(msg, self.host, self.port)
+  return w.send(msg, self.host, self.port)
 end
 
 return _M
