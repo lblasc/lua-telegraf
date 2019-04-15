@@ -32,7 +32,7 @@ function _M.new(options)
 
   local o = {
     host        = options.host or '127.0.0.1',
-    port        = tonumber(options.port) or 8086,
+    port        = tonumber(options.port) or 8094,
     global_tags = options.global_tags or false,
     batch_size  = tonumber(options.batch_size) or false,
     precision   = options.precision   or false,
