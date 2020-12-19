@@ -1,7 +1,7 @@
 package = "telegraf"
 version = "scm-2"
 source = {
-  url = "git://github.com/lblasc/telegraf",
+  url = "git://github.com/lblasc/lua-telegraf",
   branch = "master"
 }
 description = {
@@ -10,8 +10,8 @@ description = {
   This library implements writer interface for InfluxDB line protocol.
   Focus is on simplicity and efficiency. Depending on runtime it will
   find most suitable backend/library for constructing and writing metrics.
-  ]]
-  homepage = "https://github.com/lblasc/telegraf",
+  ]],
+  homepage = "https://github.com/lblasc/lua-telegraf",
   license = "MIT"
 }
 dependencies = {
@@ -20,9 +20,9 @@ dependencies = {
 build = {
   type = "builtin",
   modules = {
-    ['telegraf']           = "telegraf.lua"
-    ['telegraf.lineproto'] = "telegraf/lineproto.lua"
-    ['telegraf.timestamp'] = "telegraf/timestamp.lua"
+    ['telegraf']           = "telegraf.lua",
+    ['telegraf.lineproto'] = "telegraf/lineproto.lua",
+    ['telegraf.timestamp'] = "telegraf/timestamp.lua",
     ['telegraf.write']     = "telegraf/write.lua"
   }
 }
